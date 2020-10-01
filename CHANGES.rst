@@ -11,6 +11,21 @@ Changelog
 
 .. towncrier release notes start
 
+2.7.0 (2020-10-01)
+==================
+
+Compatible with: ``pulpcore>=3.7,<3.9``
+
+Bugfixes
+--------
+
+- testando o script
+  `#6715 <https://pulp.plan.io/issues/6715>`_
+
+
+----
+
+
 2.6.1 (2020-09-03)
 ==================
 
