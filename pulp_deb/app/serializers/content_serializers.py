@@ -279,13 +279,17 @@ class BasePackage822Serializer(SingleArtifactContentSerializer):
 
         try:
             artifact = self.instance._artifacts.get()
-            ret["MD5sum"] = artifact.md5
-            ret["SHA1"] = artifact.sha1
+            if artifact.md5:
+                ret["MD5sum"] = artifact.md5
+            if artifact.sha1:
+                ret["SHA1"] = artifact.sha1
             ret["SHA256"] = artifact.sha256
         except Artifact.DoesNotExist:
             remote_artifact = RemoteArtifact.objects.filter(sha256=self.instance.sha256).first()
-            ret["MD5sum"] = remote_artifact.md5
-            ret["SHA1"] = remote_artifact.sha1
+            if remote_artifact.md5:
+                ret["MD5sum"] = remote_artifact.md5
+            if remote_artifact.sha1:
+                ret["SHA1"] = remote_artifact.sha1
             ret["SHA256"] = remote_artifact.sha256
 
         ret["Filename"] = self.instance.filename(component)
