@@ -8,6 +8,7 @@ then
 
   # Add private pulp-qe test key and set ownertrust:
   curl -L https://github.com/pulp/pulp-fixtures/raw/master/common/GPG-PRIVATE-KEY-pulp-qe | cmd_stdin_prefix gpg --import
+  cmd_prefix bash -c "curl -O https://github.com/pulp/pulp-fixtures/raw/master/common/GPG-KEY-pulp-qe"
   echo "6EDF301256480B9B801EBA3D05A5E6DA269D9D98:6:" | cmd_stdin_prefix gpg --import-ownertrust
 
   # Create the signing service:

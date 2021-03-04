@@ -22,7 +22,9 @@ if __name__ == "__main__":
 
     from pulp_deb.app.models import AptReleaseSigningService
 
-    AptReleaseSigningService.objects.create(
-        name="sign_deb_release",
-        script=script_path,
-    )
+    with open("GPG-KEY-pulp-qe") as key:
+        AptReleaseSigningService.objects.create(
+            name="sign_deb_release",
+            public_key=key.read(),
+            script=script_path,
+        )
